@@ -1,0 +1,16 @@
+{
+  "name": "codex-peers-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/server.ts",
+    "broker": "bun run src/broker.ts",
+    "cli": "bun run src/cli.ts",
+    "build": "bun build src/server.ts --outfile dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "zod": "^3.24.1"
+  }
+}
