@@ -1,11 +1,13 @@
 const broker_port = Number(process.env.CODEX_PEERS_PORT || 7899);
 const broker_url = `http://127.0.0.1:${broker_port}`;
+const broker_token = process.env.CODEX_PEERS_TOKEN || "";
 
 async function fetch_json(path: string, init?: RequestInit) {
   const res = await fetch(`${broker_url}${path}`, {
     ...init,
     headers: {
       "content-type": "application/json",
+      ...(broker_token ? { "x-codex-peers-token": broker_token } : {}),
       ...(init?.headers || {}),
     },
   });

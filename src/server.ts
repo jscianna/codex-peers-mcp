@@ -30,6 +30,7 @@ type inbound_message = {
 
 const broker_port = Number(process.env.CODEX_PEERS_PORT || 7899);
 const broker_url = `http://127.0.0.1:${broker_port}`;
+const broker_token = process.env.CODEX_PEERS_TOKEN || "";
 const self_id = process.env.CODEX_PEER_ID || randomUUID();
 const self_cwd = process.env.PWD || cwd();
 const started_at = Date.now();
@@ -39,6 +40,7 @@ async function fetch_json(path: string, init?: RequestInit) {
     ...init,
     headers: {
       "content-type": "application/json",
+      ...(broker_token ? { "x-codex-peers-token": broker_token } : {}),
       ...(init?.headers || {}),
     },
   });
@@ -169,7 +171,7 @@ setInterval(async () => {
 
 const server = new McpServer({
   name: "codex-peers",
-  version: "0.1.1",
+  version: "0.1.2",
 });
 
 server.registerTool(

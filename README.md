@@ -2,6 +2,8 @@
 
 Peer discovery + messaging for Codex sessions on one machine.
 
+> Isolation tip: on shared hosts, set a unique `CODEX_PEERS_NAMESPACE` (and optionally `CODEX_PEERS_TOKEN`) to prevent cross-user message mixing.
+
 ## Features
 
 - `whoami`: get current peer id/context
@@ -92,6 +94,8 @@ codex login
 
 - `CODEX_PEERS_PORT` (default `7899`)
 - `CODEX_PEERS_DB` (default `~/.codex-peers.db`)
+- `CODEX_PEERS_NAMESPACE` (default `default`) — use a unique namespace to isolate teams/users on shared hosts
+- `CODEX_PEERS_TOKEN` (optional) — when set, broker requires `x-codex-peers-token` on non-health routes
 - `CODEX_PEER_ID` (optional override for generated peer id)
 
 ## Validation scripts
