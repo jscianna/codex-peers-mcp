@@ -1,13 +1,15 @@
 {
   "name": "codex-peers-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "bun run src/server.ts",
     "broker": "bun run src/broker.ts",
     "cli": "bun run src/cli.ts",
-    "build": "bun build src/server.ts --outfile dist/server.js"
+    "build": "bun build src/server.ts --outfile dist/server.js",
+    "test:broker": "bash scripts/test-broker-routes.sh",
+    "test:smoke": "bash scripts/smoke.sh"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.5",

@@ -72,8 +72,31 @@ bun run src/cli.ts peers
 bun run src/cli.ts send <peer_id> "hello"
 ```
 
+## Auth caveat (important)
+
+If Codex says quota exceeded unexpectedly, verify auth mode:
+
+```bash
+codex login status
+```
+
+If it says API key mode, switch back to ChatGPT OAuth for this workflow:
+
+```bash
+codex logout
+unset OPENAI_API_KEY
+codex login
+```
+
 ## Env vars
 
 - `CODEX_PEERS_PORT` (default `7899`)
 - `CODEX_PEERS_DB` (default `~/.codex-peers.db`)
 - `CODEX_PEER_ID` (optional override for generated peer id)
+
+## Validation scripts
+
+```bash
+bash scripts/test-broker-routes.sh
+bash scripts/smoke.sh
+```
